@@ -12,7 +12,7 @@ public class FuritSellerMain {
 		
 		
 		// 구매자가 5000 원 어치 사과를 구매
-		buyer.buyApple(seller, 5000);
+		buyer.buyApple(seller, 3000);
 		
 		System.out.println("판매자의 현재 상황");
 		seller.showSaleResult();
