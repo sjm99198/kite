@@ -1,4 +1,7 @@
-package fruit;
+package main;
+
+import fruit.FruitBuyer;
+import fruit.FruitSeller;
 
 public class FuritSellerMain {
 
@@ -35,6 +38,8 @@ public class FuritSellerMain {
 		
 		System.out.println("구매자의 현재 상황");
 		buyer.showBuyResult();
+		
+		//System.out.println("구매자의 보유한 돈의 액수 :" + buyer.myMoney);
 		
 		
 		

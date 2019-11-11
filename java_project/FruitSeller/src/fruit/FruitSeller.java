@@ -8,8 +8,8 @@ public class FruitSeller {
 	/*
 	  final int APPLE_PRICE = 1000; // 사과 1개의 금액
 	 */	
-	int numofApple; // 사과의 개수
-	int myMoney; // 판매 금액
+	private int numofApple; // 사과의 개수
+	private int myMoney; // 판매 금액
 	final int APPLE_PRICE; // 사과 1개의 금액
 	
 	// 생성자 만들기
@@ -56,7 +56,7 @@ public class FruitSeller {
 	}
 	
 	// 판매 결과 출력
-	void showSaleResult() {
+	public void showSaleResult() {
 		System.out.println("남은 사과의 개수 : " + numofApple);
 		System.out.println("판매 수익 : " + myMoney);
 	}
