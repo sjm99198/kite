@@ -1,5 +1,7 @@
 package test;
 
+
+
 public class Triangle {
 	
 	//밑변과 높이 정보
