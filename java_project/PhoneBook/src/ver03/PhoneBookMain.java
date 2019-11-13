@@ -18,7 +18,40 @@ public class PhoneBookMain {
 	public static void main(String[] args) {
 		
 		while(true) {
-			insert();
+			
+			System.out.println("-----------------------------");
+			System.out.println("원하시는 기능의 숫자를 입력해주세요.");
+			System.out.println("1. 정보 입력");
+			System.out.println("2. 정보 검색");
+			System.out.println("3. 정보 삭제");
+			System.out.println("4. 프로그램 종료");
+			System.out.println("-----------------------------");
+			
+			//
+			
+			int menuNum = sc.nextInt();
+			
+			sc.nextLine();
+			
+			
+			switch (menuNum) {
+			case 1:
+				insert();
+				break;
+			case 2:
+				searchInfo();
+				break;
+			case 3:
+				deleteInfo();
+				break;
+			case 4:
+				System.out.println("프로그램을 종료합니다.");
+				return;
+				
+			}
+			
+			System.out.println("-----------------------------");
+			
 		}
 		
 		
@@ -76,8 +109,43 @@ public class PhoneBookMain {
 	}
 	
 	
+	public static void searchInfo() {
+		
+		System.out.println("찾고자하는 이름을 입력해주세요.");
+		String name = sc.nextLine();
+		
+		int index = searchIndex(name);
+		
+		// index -> -1:검색결과가 없다, 0~cnt-1
+		if(index<0) {
+			System.out.println("찾으시는 이름의 정보가 없습니다.");
+		} else {
+			pBook[index].showInfo();
+		}
+		
+	}
 	
 	
+	public static void deleteInfo() {
+		
+		System.out.println("삭제하고자하는 이름을 입력해주세요.");
+		String name = sc.nextLine();
+		
+		int index = searchIndex(name);
+		
+		if(index<0) {
+			System.out.println("찾은시는 이름의 정보가 없습니다.");
+		} else {
+			
+			for(int i=index; i< cnt-1;i++) {
+				pBook[i] = pBook[i+1];
+			}
+			
+			cnt--;
+			
+			System.out.println("삭제되었습니다.");
+		}
+	}
 	
 	
 	
