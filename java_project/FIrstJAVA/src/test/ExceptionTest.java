@@ -11,6 +11,7 @@ public class ExceptionTest {
 			try {
 				result= number/(int)(Math.random()*10);
 				System.out.println(result);
+				
 			} catch (ArithmeticException ae) {
 				//System.out.println("0으로 나누기는 할수 없습니다.");
 				
