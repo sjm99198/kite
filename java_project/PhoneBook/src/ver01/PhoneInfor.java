@@ -5,9 +5,9 @@ public class PhoneInfor {
 	//• 이름            name            String
 	//• 전화번호       phoneNumber     String
 	//• 생년월일       birthday        String	
-	private String name;			// 홍길동
-	private String phoneNumber;  	// 010-9018-8548
-	private String birthday;		// 2019-11-12
+	public String name;			// 홍길동
+	public String phoneNumber;  	// 010-9018-8548
+	public String birthday;		// 2019-11-12
 	
 	
 	// 데이터 초기화
