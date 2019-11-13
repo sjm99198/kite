@@ -13,7 +13,14 @@ public class ExceptionTest {
 				System.out.println(result);
 			} catch (ArithmeticException ae) {
 				//System.out.println("0으로 나누기는 할수 없습니다.");
+				
+				//System.out.println(ae.getMessage());
+				
 				i--;
+			} catch (ArrayIndexOutOfBoundsException aie) {
+				
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
 			
 		}
