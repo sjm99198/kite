@@ -21,9 +21,23 @@ public class PhoneBookManager {
 	// 콘솔 입력
 	Scanner sc;
 	
+	// 싱글톤 패턴 : 인스턴스를 단 하나만 생성해서 사용하도록 처리
+	// 1. 다른 객체에서 인스턴스 생성을 막는다. -> 생성자에 private 적용
+	// 2. 인스턴스 자신이 인스턴스를 생성
+	// 3. 외부에서 생성된 참조변수를 호출할수 있는 메서드를 생성
 	
+	public static PhoneBookManager getInstance() {
+		if(m==null) {
+			return new PhoneBookManager();
+		} else {
+			return m;
+		}
+		
+	}
 	
-	public PhoneBookManager() {
+	private static PhoneBookManager m = new PhoneBookManager();
+	
+	private PhoneBookManager() {
 		pBook = new PhoneInfor[100];
 		sc = new Scanner(System.in);
 	}

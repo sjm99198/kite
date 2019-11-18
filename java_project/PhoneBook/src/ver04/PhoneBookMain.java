@@ -5,7 +5,8 @@ public class PhoneBookMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		PhoneBookManager manager = new PhoneBookManager();
+		//PhoneBookManager manager = new PhoneBookManager();
+		PhoneBookManager manager = PhoneBookManager.getInstance();
 
 		while (true) {
 			System.out.println("==========================");
