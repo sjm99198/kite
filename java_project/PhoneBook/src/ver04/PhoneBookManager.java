@@ -133,6 +133,19 @@ public class PhoneBookManager {
 	}
 	
 	
+	// 배열에 저장된 전체 데이터를 출력
+	void showAll() {
+		
+		System.out.println("친구 리스트 ");
+		System.out.println("---------------------");
+		for(int i=0; i<cnt; i++) {
+			pBook[i].showBasicInfor();
+			System.out.println("___________________");
+		}
+	}
+	
+	
+	
 	
 	
 	
