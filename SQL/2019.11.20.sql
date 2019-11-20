@@ -90,3 +90,54 @@ select ename from emp where ename not like '%A%';
 -- NULL 연산자 : IS NULL, IS NOT NULL
 select ename, comm from emp where comm is null;
 select ename, comm from emp where comm is not null;
+
+-- 결과 데이터 행의 정렬 : order by 컬럼명 asc(오름차순)/desc(내림차순)
+-- 숫자
+select ename, sal from emp order by sal asc;
+select ename, sal from emp order by sal;
+select ename, sal from emp order by sal desc;
+
+-- 날짜
+select ename, hiredate from emp order by hiredate;
+select ename, hiredate from emp order by hiredate desc;
+
+-- 문자열
+select ename from emp order by ename;
+select ename 
+from emp 
+order by ename desc;
+
+-- 중복의 정렬조건
+select ename, sal from emp order by sal desc;
+select ename, sal from emp order by sal desc, ename asc;
+select ename, sal, hiredate from emp order by sal desc, hiredate desc;
+
+
+
+-- 함수
+
+-- 변환함수 : 날짜 -> 문자열 , TO_CHAR(날짜 , '패턴')
+select sysdate, to_char(sysdate,'YYYY.MM.DD DAY (DY) AM HH24:MI:SS') as "날짜"
+from dual;
+
+select ename, hiredate, to_char(hiredate, 'YYYY.MM.DD DAY ') hiredate1
+from emp
+ORDER BY hiredate
+;
+
+-- 변환함수 : 숫자 -> 문자열 , TO_CHAR(숫자 , '패턴')
+select to_char(12345, 'L0,000,000'), to_char(12345, 'L9,999,999'), to_char(12345.67, '00,000.00')
+from dual;
+
+select ename, sal, to_char(sal, 'L9,999,999'), to_char(sal*1000, 'L9,999,999'), to_char(sal*1000*12+nvl(comm, 0)*1000, 'L999,999,999')
+from emp
+order by sal desc
+;
+
+-- 변환함수 : to_date(문자열/숫자, '패턴')
+select trunc(sysdate-to_date('2019/01/01', 'YYYY/MM/DD'))
+from dual;
+
+-- 변환함수 : to_number(문자열, '패턴')
+select to_number('20,000', '999,999') - to_number('10,000', '999,999')
+from dual;
