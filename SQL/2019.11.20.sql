@@ -71,4 +71,22 @@ from emp
 where hiredate between '81/01/01' and '81/12/31'
 ;
 
+-- OR 연산의 코드를 줄이는 IN 연산자
+select ename, comm from emp where comm=300 or comm=500 or comm=1400;
+select ename, comm from emp where comm in(300, 500, 1400);
 
+
+-- 패턴 검색 :  컬럼 이름 LIKE 패턴식
+select ename from emp where ename LIKE 'S%';
+select ename from emp where ename LIKE '%S';
+select ename from emp where ename LIKE '%A%'; 
+
+-- 자리수 고정 패턴 : _ 이용
+select ename from emp where ename like '_A%';
+select ename from emp where ename like '__A%';
+
+select ename from emp where ename not like '%A%';
+
+-- NULL 연산자 : IS NULL, IS NOT NULL
+select ename, comm from emp where comm is null;
+select ename, comm from emp where comm is not null;
