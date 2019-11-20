@@ -141,3 +141,49 @@ from dual;
 -- 변환함수 : to_number(문자열, '패턴')
 select to_number('20,000', '999,999') - to_number('10,000', '999,999')
 from dual;
+
+-- 8. 직급에 따라 급여를 인상하도록 하자. 
+-- 직급이 'ANAlYST'인 사원은 5%, 
+-- 'SALESMAN'인 사원은 10%, 
+-- 'MANAGER'인 사원은 15%, 
+-- 'CLERK'인 사원은 20%인 인상한다.
+select empno, ename, job, sal, 
+        decode(job, 'ANALYST', sal + sal*0.05,
+                    'SALESMAN', sal + sal*0.1,
+                    'MANAGER', sal + sal*0.15,
+                    'CLERK', sal + sal*0.2
+        ) upsal
+from emp
+order by job
+;
+
+-- 집합함수
+select sum(sal) as "월 총급여", 
+       trunc(avg(sal)) as "월 평균 급여",
+       count(*) as "총 사원의 수",
+       max(sal) as "최고 급여",
+       min(sal) as "최저 급여",
+       sum(comm) as "총 상여금",
+       avg(comm) as "상여금 평균",
+       count(comm) as "상여금 책정 인원"
+from emp
+where deptno=30
+;
+
+select * from emp order by deptno;
+
+-- group by : 그룹핑 -> 그룹별 집합 함수 표현
+select deptno, count(*), sum(sal), trunc(avg(sal))
+from emp
+group by deptno
+having avg(sal) > 2000
+;
+
+
+
+
+
+
+
+
+
