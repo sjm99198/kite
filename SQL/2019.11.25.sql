@@ -253,3 +253,67 @@ rename emp02 to test;
 
 desc test;
 
+-- 제약조건 
+insert into dept  values (10, 'test', 'seoul');
+
+desc dept;
+
+-- not null 제약조건
+drop table emp01;
+create table emp01(
+    empno number(4) not null,
+    ename varchar2(20) not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+insert into emp01 values (1001, 'son', 'manager', 10);
+insert into emp01 values (1001, 'lee', 'manager', 20);
+select * from emp01;
+
+drop table emp03;
+create table emp03 (
+    empno number(4) unique,
+    ename varchar2(20) not null,
+    job varchar2(10),
+    deptno number(2)
+);
+insert into emp03 values (1001, 'son', 'manager', 10);
+insert into emp03 values (1002, 'king', 'manager', 30);
+
+
+drop table emp04;
+create table emp04 (
+    empno number(4) constraint emp04_empno_uk  unique,
+    ename varchar2(20) constraint emp04_ename_nn  not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+insert into emp04 values (1001, 'son', 'manager', 10);
+insert into emp04 values (1001, 'lee', 'manager', 30);
+
+
+
+drop table emp05;
+create table emp05 (
+    empno number(4) constraint emp05_empno_pk primary key,
+    ename varchar2(20) constraint emp05_ename_nn  not null ,
+    job varchar2(10),
+    deptno number(2)
+);
+
+insert into emp05 values (1001, 'son', 'manager', 10);
+insert into emp05 values (1001, 'lee', 'manager', 30);
+
+drop table emp06;
+create table emp06 (
+    empno number(4) constraint emp06_empno_pk primary key,
+    ename varchar2(20) constraint emp06_ename_nn  not null ,
+    job varchar2(10),
+    deptno number(2) CONSTRAINT emp06_deptno_fk REFERENCES dept(deptno)
+);
+
+insert into emp06 values (1001, 'son', 'manager', null);
+insert into emp06 values (1002, 'lee', 'manager', 40);
+select * from emp06;
