@@ -194,3 +194,62 @@ create table emp02 (
 drop table emp02;
 
 desc emp01;
+
+-- 기존 테이블의 스키마 복사(제약조건 제외)해서 테이블 생성
+create table emp02
+as
+select * from emp
+;
+desc emp;
+desc emp02;
+
+create table emp03
+as
+select empno, ename from emp;
+
+desc emp03;
+select * from emp03;
+
+create table emp04
+as 
+select * from emp where deptno=10;
+select * from emp04;
+
+create table emp06
+as
+select * from emp where 1=0;
+select * from emp06;
+
+-- 테이블의 수정 : 컬럼의 추가, 컬럼의 수정, 컬럼의 삭제
+
+desc emp01;
+
+-- 컬럼의 추가
+alter table emp01
+add (job varchar2(9));
+
+-- 컬럼의 수정
+alter table emp01
+MODIFY (job varchar2(30));
+
+-- 컬럼의 삭제
+alter table emp01
+drop column job;
+
+create table emp07
+as
+select * from emp;
+select * from emp07;
+
+-- 테이블 삭제
+drop table emp07;
+
+select * from emp02;
+
+TRUNCATE table emp02;
+
+-- 테이블 이름 변경
+rename emp02 to test;
+
+desc test;
+
