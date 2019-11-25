@@ -132,3 +132,53 @@ DESC EMP;
 -- ROWNUM
 SELECT ENAME, ROWNUM FROM EMP;
 
+
+-- 스칼라 부속질의 : select 뒤에 위치하는 부속질의
+-- 마당서점의 고객별 판매액을 보이시오(결과는 고객이름과 고객별 판매액을 출력).
+select o.custid, (select name from customer c where c.custid=o.custid ) name
+        , sum(o.saleprice), trunc(avg(o.saleprice)), count(*)
+from orders o
+group by o.custid
+;
+select custid from orders order by custid;
+
+-- 주문 정보를 출력 해보자 ( 주문번호, 고객 이름, 주문 금액 )
+select orderid, (
+    select name from customer where orders.custid=customer.custid 
+    ) , saleprice  
+from orders ;
+-- join
+select o.orderid, c.name, o.saleprice
+from orders o, customer c
+where o.custid=c.custid
+;
+
+-- 인라이 뷰 : from 절 뒤에 오는 부속질의 가상의 테이블로 사용
+-- 고객 이름별 구매 금액의 합
+select c.name, sum(o.saleprice)
+from customer c, orders o
+where c.custid=o.custid
+group by c.name
+;
+
+select * from (select custid, name from customer where custid<=2)
+order by name;
+
+select c.name, sum(o.saleprice)
+from (
+    select custid, name from customer where custid<=2
+) c, orders o
+where c.custid=o.custid
+group by c.name
+;
+
+-- rownum
+select ename, rownum from emp;
+select ename, rownum from emp order by ename;
+
+select ename, rownum from ( select * from emp order by ename );
+
+
+
+
+
