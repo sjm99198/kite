@@ -69,8 +69,66 @@ select * from emp e, emp m where e.mgr=m.empno(+);
 select * from emp e inner join emp m on e.mgr=m.empno;
 select * from emp e left outer join emp m on e.mgr=m.empno;
 
+select * from emp m right outer join emp e on e.mgr=m.empno;
 
 
 select * from dept d, emp e where d.deptno=e.deptno(+);
 select distinct(dname) from dept d, emp e where d.deptno=e.deptno(+);
 select * from emp e, dept d where d.deptno=e.deptno(+);
+
+
+
+-- 부속질의 : 쿼리 안에 쿼리 작성
+-- select (부속질의) from (부속질의) where 컬럼 조건식 (부속질의)
+
+-- emp 테이블에서 평균 급여보다 급여를 더 많이 받는 사원의 리스트를 출력
+-- sal > 평균급여 <- 부속질의
+select avg(sal) from emp ; -- 2074
+select ename, sal from emp where sal > 2073.214285714285714285714285714285714286;
+
+select *
+from emp
+where sal > (
+    --select sal from emp where sal > 2000
+    select avg(sal) from emp
+)
+;
+
+-- 다중행 조건
+-- 3000 이상 받는 사원이 소속된 부서(10번, 20번)와 동일한 부서에서 근무하는 사원출력
+-- 3000 이상 받는 사원이 소속된 부서 : 부속질의
+-- 동일한 부서에서 근무하는 사원출력
+select distinct deptno from emp where sal>=3000;
+select ename, deptno
+from emp
+where deptno in ( select distinct deptno from emp where sal>=3000 )
+;
+
+-- 30번 소속 사원들 중에서 급여를 가장 많이 받는 사원보다 더 많은 급여를 받는 사람의 이름, 급여를 출력하는 쿼리문을 작성해 봅시다.
+-- 30번 소속 사원들 중에서 급여를 가장 많이 받는 사원
+select ename, sal from emp where deptno=30;
+select ename, sal
+from emp
+where sal > all ( select sal from emp where deptno=30 )
+;
+select sal from emp where deptno=30;
+
+SELECT ENAME, SAL FROM EMP
+WHERE SAL > (SELECT MAX(SAL) FROM EMP WHERE DEPTNO=30)
+;
+
+-- 부서번호가 30번인 사원들의 급여 중 가장 작은 값(950)보다 많은 급여를 받는 사원의 이름, 급여를 출력하는 예제를 작성해 봅시다.
+-- 부서번호가 30번인 사원들의 급여 중 가장 작은 값(950)보다
+SELECT SAL FROM EMP WHERE DEPTNO=30;
+SELECT ENAME, SAL FROM EMP
+WHERE SAL > ANY (SELECT SAL FROM EMP WHERE DEPTNO=30)
+;
+SELECT ENAME, SAL FROM EMP
+WHERE SAL > ( SELECT MIN(SAL) FROM EMP WHERE DEPTNO=30 )
+;
+
+DESC EMP;
+
+-- ROWNUM
+SELECT ENAME, ROWNUM FROM EMP;
+
