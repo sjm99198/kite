@@ -180,5 +180,17 @@ select ename, rownum from ( select * from emp order by ename );
 
 
 
+-- DDL
 
+-- CREATE TABLE : 테이블 생성
 
+--사원번호, 사원이름, 급여 3개의 칼럼으로 구성된 EMP01 테이블을 생성해 봅시다.
+create table emp02 (
+    empno number(4), -- 사원 번호
+    ename varchar2(20), -- 사원 이름
+    sal number(7,2) -- 급여
+);
+
+drop table emp02;
+
+desc emp01;
