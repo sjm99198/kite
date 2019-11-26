@@ -143,6 +143,32 @@ from (select * from emp order by hiredate)
 where rownum<=5
 ;
 
+-- sequence : 자동 숫자 재생기
+-- currval : 현재 시쿼스의 값을 반환
+-- nextval : 새로운 번호를 생성해서 반환
+
+create sequence dept_deptno_seq
+start with 10
+INCREMENT by 10;
+
+drop sequence dept_deptno_seq;
+
+select dept_deptno_seq.nextval from dual;
+
+create table dept03
+as
+select * from dept where 1=0;
+
+select * from dept03;
+
+insert into dept03 values(dept_deptno_seq.nextval, 'dev', 'seoul');
+insert into dept03 values(dept_deptno_seq.nextval, 'dev');
+
+rollback;
+
+
+-- 인덱스 : 검색을 빠르게 지원
+
 
 
 
