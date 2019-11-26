@@ -116,3 +116,37 @@ DELETE FROM DEPT01;
 
 ROLLBACK;
 
+-- VIEW : 기본 테이블을 기반으로 하는 가상테이블 ( select 의 결과를 테이블로 사용 )
+
+select empno, ename, deptno from emp where deptno=30;
+select * from emp_view30;
+create or REPLACE view emp_view30
+as
+select empno, ename, deptno from emp where deptno=30
+;
+drop VIEW emp_view30;
+
+
+-- 인라인 뷰
+-- 입사일 빠른 5명을 순서대로 출력
+select rownum, ename , hiredate from emp order by hiredate;
+
+create or replace view emp_view_hire
+as
+select ename, hiredate from emp order by hiredate
+;
+
+select rownum, ename, hiredate from emp_view_hire where ROWNUM <=5;
+
+select rownum, ename, hiredate 
+from (select * from emp order by hiredate)
+where rownum<=5
+;
+
+
+
+
+
+
+
+
