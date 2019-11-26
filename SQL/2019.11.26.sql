@@ -30,10 +30,40 @@ desc emp07;
 -- insert into 테이블 이름 (컬럼,...)   values ( data, . ....)
 insert into emp07 (empno, ename, sal) values (null, null, 300);
 insert into emp07 (empno, ename, sal) values (1000, null, 300);
-insert into emp07 (empno, ename, sal) values (1000, 'son', 30000);
+insert into emp07 (empno, ename, sal) values (1000, 'son', 5001);
 insert into emp07 (empno, ename, sal) values (1000, 'son', 3000);
 
 select * from emp07;
+
+-- 데이터 입력 
+-- insert into 테이블 이름 (행단위 입력에서 입력하고자 하는 컬럼들을 기술 ) values (기술된 컬럼에 입력할 데이터 들을 기술)
+-- 입력할 컬럼의 개수와 입력할 데이터의 개수가 같아야 한다. 타입도 같아야 한다
+
+create table dept01
+as
+select * from dept where 1=0;
+
+insert into dept01 (depno, dname, loc) 
+            values (10, 'dev', 'seoul');
+
+desc dept01;
+insert into dept01 values (20, 'design', 'jeju');
+insert into dept01 values ('design', 20, 'jeju'); -- 오류 
+
+
+-- 데이터의 변경
+-- UPDATE 테이블 이름 SET 변경 컬럼=새로운 DATA,... WEHRE 조건식 ( 행선택 )
+DROP TABLE EMP01;
+CREATE TABLE EMP01
+AS
+SELECT * FROM EMP;
+SELECT * FROM EMP01;
+
+UPDATE EMP01 SET DEPTNO=20 WHERE ENAME='SCOTT';
+
+
+
+
 
 
 
