@@ -169,6 +169,11 @@ rollback;
 
 -- 인덱스 : 검색을 빠르게 지원
 
+create index idx_emp_ename 
+on emp(ename)
+;
+
+
 
 
 
