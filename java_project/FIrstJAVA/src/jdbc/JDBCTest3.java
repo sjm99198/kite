@@ -44,11 +44,21 @@ public class JDBCTest3 {
 			//dao.insertDept(conn, 90, "design", "seoul");
 			
 			// 부서 정보 수정
-			dao.editDept(conn, 80, "MARKETING", "NEWYORK");
-			dao.editDept(conn, 60, "MARKETING", "NEWYORK");
+			//dao.editDept(conn, 80, "MARKETING", "NEWYORK");
+			//dao.editDept(conn, 60, "MARKETING", "NEWYORK");
+			
+			// 부서정보 삭제
+			//dao.deleteDept(conn, 90);
+			//dao.deleteDept(conn, 70);
 			
 			// 부서 리스트 출력
-			dao.listDept(conn);
+			//dao.listDept(conn);
+			
+			// 부서 검색
+			dao.searchDept(conn, 90);
+			dao.searchDept(conn, 10);
+			dao.searchDept(conn, 40);
+			dao.searchDept(conn, 60);
 			
 			
 			
