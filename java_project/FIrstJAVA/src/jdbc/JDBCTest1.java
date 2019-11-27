@@ -30,6 +30,8 @@ public class JDBCTest1 {
 			
 			System.out.println("데이터베이스에 정상적으로 접속되었습니다.");
 			
+			conn.setAutoCommit(false);
+			
 			// 3. 데이터의 검색과 변경처리 : select / DML
 			
 			
@@ -58,9 +60,14 @@ public class JDBCTest1 {
 			
 			
 			// 입력 메서드 호출
-			//insertDept(conn, 60, "design", "jeju");
-			//insertDept(conn, 70, "design", null);
-			insertDept(conn, 80, null, null);
+			insertDept(conn, 70, "design", "jeju");
+			insertDept(conn, 70, "design", null);
+			insertDept(conn, 90, null, null);
+			
+			listDept(conn);
+			
+			
+			conn.commit();
 			
 			
 			
@@ -68,26 +75,26 @@ public class JDBCTest1 {
 			// 3.2 dept 테이블의 내용을 출력
 			// Statement 객체 생성
 			
-			Statement stmt = conn.createStatement();
-			
-			String sql1 = "select * from dept ";
-			
-			ResultSet rs = stmt.executeQuery(sql1);
-			
-			while(rs.next()) {
-				
-//				int deptno = rs.getInt("deptno");
-//				String dname = rs.getString("dname");
-//				String loc = rs.getString("loc");
-				int deptno = rs.getInt(1);
-				String dname = rs.getString(2);
-				String loc = rs.getString(3);
-				
-				System.out.println(deptno + " | " + dname + " | " + loc);
-			}
-			
-			rs.close();
-			stmt.close();
+//			Statement stmt = conn.createStatement();
+//			
+//			String sql1 = "select * from dept ";
+//			
+//			ResultSet rs = stmt.executeQuery(sql1);
+//			
+//			while(rs.next()) {
+//				
+////				int deptno = rs.getInt("deptno");
+////				String dname = rs.getString("dname");
+////				String loc = rs.getString("loc");
+//				int deptno = rs.getInt(1);
+//				String dname = rs.getString(2);
+//				String loc = rs.getString(3);
+//				
+//				System.out.println(deptno + " | " + dname + " | " + loc);
+//			}
+//			
+//			rs.close();
+//			stmt.close();
 			
 			//pstmt.close();
 			
@@ -101,12 +108,54 @@ public class JDBCTest1 {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
 			e.printStackTrace();
 			//System.out.println("입력오류");
 		}
 		
 		
 	}
+	
+	// 부서정보 리스트 출력
+	public static void listDept(Connection conn) throws SQLException {
+
+		Statement stmt = conn.createStatement();
+		
+		String sql1 = "select * from dept ";
+		
+		ResultSet rs = stmt.executeQuery(sql1);
+		
+		System.out.println("부서(DEPT) 리스트");
+		System.out.println("----------------------------");
+		
+		while(rs.next()) {
+			
+//			int deptno = rs.getInt("deptno");
+//			String dname = rs.getString("dname");
+//			String loc = rs.getString("loc");
+			int deptno = rs.getInt(1);
+			String dname = rs.getString(2);
+			String loc = rs.getString(3);
+			
+			System.out.println(deptno + " | " + dname + " | " + loc);
+		}
+		
+		System.out.println("----------------------------");
+		
+		rs.close();
+		stmt.close();
+		
+		
+	}
+	
 	
 	// DB 부서정보 입력
 	public static void insertDept(
