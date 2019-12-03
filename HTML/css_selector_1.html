@@ -76,12 +76,64 @@
             div.box h1 {
                 font-style: italic;
             }
+            
+            /*동위 선택자*/
+            h1.se + h2 {
+                color : red;
+            }
+            h1.se ~ h2.s2 {
+                background-color: aquamarine;
+            }
+            
+            div.click {
+                background-color: aquamarine;
+                
+                height : 100px;
+                width : 100px;                
+            }
+            
+            /*반응 선택자*/
+            div.click:hover {
+                background-color: red;
+            }
+            div.click: active {
+                background-color: blueviolet;
+            }
+            
+            input:enabled {
+                background-color: chartreuse;
+            }
+            input:disabled {
+                background-color: black;
+            }
+            input:focus {
+                background-color: aqua;
+            }
         
         </style>        
         
         
     </head>
     <body>
+        
+        <input> <br>
+        
+        <input disabled >
+        
+        
+        
+        <div class="click"></div>
+        
+        <hr>
+        
+        <h1 class="se">header - 1 </h1>
+        <h2>header - 2 </h2>
+        <h2>header - 2 </h2>
+        <h2 class="s2">header - 2 </h2>
+        <h2>header - 2 </h2>
+        <h2 class="s2">header - 2 </h2>
+        
+        
         
         <div class="box">
             <h1>h1 - 1</h1>
