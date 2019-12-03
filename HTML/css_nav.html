@@ -31,14 +31,51 @@
             ul.nav>li:nth-child(2n+1) {
                 background-color: aqua;
             }
+            
+            ul.nav>li:first-child>a:link {
+                text-decoration: none;
+                color : #7F7700;
+            }
+            
+            ul.nav>li:first-child>a:hover {
+                font-size: 1.2em;
+                font-weight: bold;
+                color:#7F7700;
+            }
+            
+            /* Color Theme Swatches in Hex */
+.shade-of-yellow-1-hex { color: #BFB300; }
+.shade-of-yellow-2-hex { color: #7F7700; }
+.shade-of-yellow-3-hex { color: #FFEF00; }
+.shade-of-yellow-4-hex { color: #403C00; }
+.shade-of-yellow-5-hex { color: #E5D700; }
+
+/* Color Theme Swatches in RGBA */
+.shade-of-yellow-1-rgba { color: rgba(191, 179, 0, 1); }
+.shade-of-yellow-2-rgba { color: rgba(126, 119, 0, 1); }
+.shade-of-yellow-3-rgba { color: rgba(255, 239, 0, 1); }
+.shade-of-yellow-4-rgba { color: rgba(63, 60, 0, 1); }
+.shade-of-yellow-5-rgba { color: rgba(228, 214, 0, 1); }
+
+/* Color Theme Swatches in HSLA */
+.shade-of-yellow-1-hsla { color: hsla(56, 100, 37, 1); }
+.shade-of-yellow-2-hsla { color: hsla(56, 100, 24, 1); }
+.shade-of-yellow-3-hsla { color: hsla(56, 100, 50, 1); }
+.shade-of-yellow-4-hsla { color: hsla(56, 100, 12, 1); }
+.shade-of-yellow-5-hsla { color: hsla(56, 100, 44, 1); }
+            
+           /* ul.nav>li:first-child>a:visited {
+                color: black;
+                font-weight: bold;
+            }*/
         
         </style>
     </head>
     <body>
     
         <ul class="nav">
-            <li>01</li>
-            <li>02</li>
+            <li><a href="http://www.naver.com">home</a></li>
+            <li class="shade-of-yellow-5-hex" >02</li>
             <li>03</li>
             <li>04</li>
             <li>05</li>
