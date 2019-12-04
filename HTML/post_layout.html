@@ -18,8 +18,10 @@
             /*메인 블럭 */
             #main_wrap {
                 
-                width : 898px;
+                width : 858px;
                /* height : 300px;*/
+                
+                padding : 20px;
                 
                 background-color: #FFF;
                 
@@ -34,17 +36,90 @@
             
             /*해더*/
             #header {
-                height : 100px;
+                height : 80px;
                 
-                background-color: antiquewhite;
+                /*background-color: antiquewhite;*/
             }
+            
+            #header>h1.title {
+                margin-top : 10px;
+                margin-left : 30px
+                /*background-color: aquamarine;*/
+            }
+            
+            #header>h1.title + span {
+                margin-left : 30px
+            }
+            
             
             /*네비게이션*/
             #nav {
                 height : 35px;
                 
-                background-color: burlywood;
+                /*background-color: burlywood;*/
+                
+                overflow: hidden;
+                
+                border-top : 1px solid #DDD;
+                border-bottom : 1px solid #DDD;
+                
             }
+            
+            #nav>ul.menu {
+                
+                width : 400px;
+                    
+                float: left;
+                overflow: hidden;
+                
+                list-style: none;
+            }
+            
+            #nav>ul.menu>li {
+                float:left;
+                
+                width : 100px;
+                height : 35px;
+                
+                line-height: 35px;
+                text-align: center;
+            }
+            
+            #nav>ul.menu>li:hover {
+                background-color: black;
+                color: white;
+            }
+            
+            #nav>div.searchbox{
+                float: right;
+                height : 35px;
+            }
+            
+            #nav>div.searchbox>input[type=text] {
+                border-radius: 24px 0 0 24px;
+                border : 1px solid #DDD;
+                
+                height: 24px;
+                width : 120px;
+                
+                padding-left : 15px;
+                font-size: 18px;
+                vertical-align: middle;
+                
+                margin-top : 4px;
+            }
+            
+            #nav>div.searchbox>input[type=button] {
+                padding : 3px 10px;
+                
+                border : 1px solid #DDD;
+                border-radius: 0 20px 20px 0;
+                
+                background-color: #EEE;
+                vertical-align: middle;
+                margin-top : 4px;
+            }
+            
             
             /*컨텐츠 렙*/
             #content_wrap {
@@ -53,7 +128,7 @@
             
             /*Content*/
             #content {
-                width : 649px;
+                width : 629px;
                 height : 300px;
                 
                 background-color: aquamarine;
@@ -63,7 +138,7 @@
             
             /*aside*/
             #aside {
-                width : 249px;
+                width : 229px;
                 height: 200px;
                 
                 background-color: coral;
@@ -89,11 +164,25 @@
         <div id="main_wrap">
         
             <!-- 페이지 해더 : 로고, BI, CI , text-->
-            <div id="header">header</div>
+            <div id="header">
+                <h1 class="title">TITLE Blog</h1>
+                <span>블러그 페이지입니다.</span>
+            </div>
             <!--페이지 해더 종료-->
             
             <!--페이지 네비게이션 : 메뉴, 검색박스-->
-            <div id="nav">nav</div>
+            <div id="nav">
+                <!--메뉴-->
+                <ul class="menu">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Javascript</li>
+                </ul>
+                <div class="searchbox">
+                    <input type="text"><input type="button" value="검색">
+                </div>
+            
+            </div>
             <!--네비게이션 종료-->
             
             <!--컨텐츠와 사이드 메뉴 감싸는 렙-->
