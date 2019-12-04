@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>레이아웃</title>
+        <style>
+            
+            /*초기화*/
+            * {
+              margin : 0;
+                padding : 0;
+            }
+            
+            /*body 초기화*/
+            body {
+                background-color: beige
+            }
+            
+            /*메인 블럭 */
+            #main_wrap {
+                
+                width : 898px;
+               /* height : 300px;*/
+                
+                background-color: #FFF;
+                
+                border : 1px solid #DDD;
+                
+                margin: 20px auto;
+                
+                border-radius: 5px;
+                
+                box-shadow: 5px 5px 10px #DDD
+            }    
+            
+            /*해더*/
+            #header {
+                height : 100px;
+                
+                background-color: antiquewhite;
+            }
+            
+            /*네비게이션*/
+            #nav {
+                height : 35px;
+                
+                background-color: burlywood;
+            }
+            
+            /*컨텐츠 렙*/
+            #content_wrap {
+                overflow: hidden;
+            }
+            
+            /*Content*/
+            #content {
+                width : 649px;
+                height : 300px;
+                
+                background-color: aquamarine;
+                
+                float : left;
+            }
+            
+            /*aside*/
+            #aside {
+                width : 249px;
+                height: 200px;
+                
+                background-color: coral;
+                
+                float : left;
+            }
+            
+            
+            /*footer*/
+            #footer {
+                 height : 100px;
+                
+                background-color: antiquewhite;
+                
+                
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <!--메인 렙-->
+        <div id="main_wrap">
+        
+            <!-- 페이지 해더 : 로고, BI, CI , text-->
+            <div id="header">header</div>
+            <!--페이지 해더 종료-->
+            
+            <!--페이지 네비게이션 : 메뉴, 검색박스-->
+            <div id="nav">nav</div>
+            <!--네비게이션 종료-->
+            
+            <!--컨텐츠와 사이드 메뉴 감싸는 렙-->
+            <div id="content_wrap">
+                <!--컨텐츠 : article ( 제목 , 날짜, 이미지, 본문)-->
+                <div id="content">content</div>
+                <!--컨텐츠 종료-->
+                <!--사이드 메뉴 : 카테고리 메뉴-->
+                <div id="aside">aside</div>
+                <!--사이드 메뉴 종료-->
+            </div>
+            <!--컨텐츠 랩 종료-->
+            
+            <!--푸터 시작 : 카피라이트, 회사정보, 글로벌 메뉴-->
+            <div id="footer">footer</div>
+            <!--푸터 종료-->
+        
+        
+        
+        
+        </div>
+        
+        
+        
+    </body>
+    
+</html>
