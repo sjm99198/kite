@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>문서 객체 </title>
+        
+        <script>
+            // 이벤트 속성에는 함수를 등록 해준다.
+            window.onload = function(){
+                
+                // 엘리먼트 생성(테그 생성) : h1
+                var h1 = document.createElement('h1');
+                // 텍스트 엘리먼트 생성 : hello~!!
+                var text = document.createTextNode('hello~~!!!');
+                
+                // 노드를 연결
+                h1.appendChild(text);
+                //document.body.appendChild(h1);
+                
+                var img = document.createElement('img');
+                //img.src = '../star.png';
+                //img.width = 500;
+                //img.height = 500;
+                img.setAttribute('src', '../mini.jpg');
+                img.setAttribute('width', 300);
+                img.setAttribute('height', 300);
+                
+                //document.body.appendChild(img);
+                
+                
+                // id 속성으로 테그를 선택해서 문서객체로 만든다(Casting)
+                var header1 = document.getElementById('header1');
+               // header1.innerHTML = '해더 - 1';
+                
+                //var header2 = document.getElementById('header2');
+                var header2 = document.querySelector('#header2')
+                //header2.innerHTML = '해더 - 2';
+                
+                //document.body.removeChild(header2);
+                
+                // 문서객체 생성
+                var clock = document.getElementById('clock');
+                
+                setInterval(function(){
+                    clock.innerHTML = new Date().toString();
+                },1000);
+            
+                
+            }
+            
+            
+        
+            /*var header1 = document.getElementById('header1');
+            header1.innerHTML = '해더 - 1';*/
+        </script>
+        
+    </head>
+    <body>
+        
+        <!--<h1 id="header1"></h1>-->
+        <!--<h1 id="header2">해더 - 2</h1>-->
+        
+        <h1 id="clock"></h1>
+    
+        
+        <script>
+//            var header1 = document.getElementById('header1');
+//            header1.innerHTML = '해더 - 1';
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
