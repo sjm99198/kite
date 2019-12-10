@@ -1,0 +1,7 @@
+{
+    "uid" : "hong@naver.com",
+    "upw" : "1111",
+    "uname" : "hong",
+    "age" : 20,
+    "like" : [{},{},{}]
+}
