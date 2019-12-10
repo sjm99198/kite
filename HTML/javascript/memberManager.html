@@ -29,6 +29,18 @@
                 padding : 10px;
                 text-align: center;
             }
+            
+            #editBox{
+                position: absolute;
+                top : 10px;
+                right : 10px;
+                
+                background-color: #FFF;
+                padding : 15px;
+                border : 3px solid #DDD;
+                
+                display: none;
+            }
         </style>
         
     </head>
@@ -75,18 +87,47 @@
                         <th>이름</th>
                         <th>관리</th>
                     </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>ryuyj@naver.com</td>
-                        <td>2222</td>
-                        <td>테스터</td>
-                        <td><a href="javascript:edit(0)">수정</a> | <a  href="javascript:delete(0)">석제</a></td>
-                    </tr>
+                    
                 </tbody>
             </table>
             
         </div>
         <!--회원리스트 끝-->
+        
+        <div id="editBox">
+            <h3>회원 데이터 수정</h3>
+            <hr>
+            <form id="editForm" onsubmit="return editData();">
+                <input type="hidden" id="eidx">
+                     
+                <table>
+                    <tr>
+                        <td>아이디(이메일)</td>
+                        <td><input type="text" id="eid"> </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" id="epw"> </td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" id="ename"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;" ><input type="submit" value="수정"> </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         <script>
             
@@ -124,13 +165,41 @@
                     
                     alert('members 배열의 요소 개수 : '+members.length);
                     
+                    
+                    
                     var strHtml = '';
+                    strHtml += '<tr>\n';
+                    strHtml += '    <th>순번(index)</th>\n';
+                    strHtml += '    <th>아이디</th>\n';
+                    strHtml += '    <th>비밀번호</th>\n';
+                    strHtml += '    <th>이름</th>\n';
+                    strHtml += '    <th>관리</th>\n';
+                    strHtml += '</tr>\n';
+                    
+                    
                     for(var i=0; i<members.length; i++){
                         var o = members[i];
-                        strHtml += o.mid+' : '+o.mname+' : '+o.mpw+'\n';
+                        //strHtml += o.mid+' : '+o.mname+' : '+o.mpw+'\n';
+                        
+                        strHtml += '<tr>\n';
+                        strHtml += '    <td>'+i+'</td>\n';
+                        strHtml += '    <td>'+o.mid+'</td>\n';
+                        strHtml += '    <td>'+o.mpw+'</td>\n';
+                        strHtml += '    <td>'+o.mname+'</td>\n';
+                        strHtml += '    <td><a href="javascript:edit('+i+')">수정</a> | <a  href="javascript:del('+i+')">삭제</a></td>\n';
+                        strHtml += '</tr>\n';
                     }
                     
-                    alert(strHtml);
+                    // alert(strHtml);
+                    
+                    
+                    // 테이블 행 등록
+                    // 테이블의 tbody 테그를 캐스팅
+                    var listRow = document.getElementById('listRow');
+                    
+                    listRow.innerHTML = strHtml;
+                    
+                    
                     
                     return false;
                 };
@@ -138,6 +207,49 @@
                 
             };
         
+            
+            // 수정 함수
+            function edit(idx){
+                alert(idx+'번 데이터를 수정합니다.');
+                
+                // editBox -> display : block
+                
+                var editBox = document.getElementById('editBox');
+                // 스타일 변경
+                editBox.style.display='block';
+                
+                /*editForm 에 있는 input 요소들의 데이터를 할당*/
+                
+                var member = members[idx];
+                
+                // eid, epw, ename 캐스팅
+                document.getElementById('eid').value=member.mid;
+                document.getElementById('epw').value=member.mpw;
+                document.getElementById('ename').value=member.mname;
+                document.getElementById('eidx').value=idx;
+                
+                
+                
+                
+            }
+            
+            // 배열의 데이터를 수정하는 함수
+            function editData(){
+                
+                alert('수정되었습니다.')
+                
+                document.getElementById('editBox').style.display='none';
+                
+                return false;
+            }
+            
+            
+            
+            // 삭제 함수
+            function del(idx){
+                alert(idx+'번 데이터를 삭제합니다.')
+            }
+            
         </script>
     </body>
     
