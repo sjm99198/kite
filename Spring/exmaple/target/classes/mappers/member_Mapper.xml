@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+insert into tbl_member(userid,userpw,username,email) values
+(#{userId},#{userPw},#{userName},#{email})

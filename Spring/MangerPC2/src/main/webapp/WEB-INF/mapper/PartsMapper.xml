@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.kite.mm.parts.dao.PartsDao">
+
+	<insert id="insertArticle"
+			parameterType="com.kite.mm.parts.domain.WriteRequest"
+			useGeneratedKeys="true" 
+			keyProperty="idx"
+			>
+	
+		insert into PCINFO (type, title, content, price) 
+		values (#{type}, #{title}, #{content}, #{price})
+	
+	</insert>
+
+</mapper>
